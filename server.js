@@ -15,9 +15,9 @@ server.use(logger);
 server.use(cors());
 
 // router
-// const someRouter = require('./somerouter/some')
+const CohortRouter = require('./router/cohort_router')
 
-// server.use('/some/some', someRouter)
+server.use('/api/cohorts', CohortRouter)
 
 server.get('/' , (req, res) => {
     res.send('This is a test')

@@ -1,15 +1,10 @@
 const knex = require('knex')
 
-// setup config for knex
-const config = {
-    client: 'sqlite3',
-    connection: {
-        filename: '.data/something'
-    },
-    useNullAsDefault: true
-}
+// bring in knex file
+const knexConfig = require('../knexfile.js')
 
-const db = knex(config)
+// bring in model
+const db = knex(knexConfig.development);
 
 module.exports = {
     find,
@@ -20,27 +15,27 @@ module.exports = {
 }
 
 function find(){
-    return db('something')
+    return db('cohorts')
 }
 
 function findById(id){
-    return db('something')
+    return db('cohorts')
     .where({id})
 }
 
 function add(newPost){
-    return db('something')
+    return db('cohorts')
     .where({id})
 }
 
 function update(id, change){
-    return db('something')
+    return db('cohorts')
     .where({id})
     .update(change)
 }
 
 function remove(id){
-    return db('something')
+    return db('cohorts')
     .where({id})
     .del()
 }

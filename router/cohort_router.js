@@ -7,7 +7,7 @@ const router = express.Router();
 // bring in model
 const DataModel = require('../dataModel/data-model');
 
-// Get all something
+// Get all cohorts
 router.get('/', async (req, res) => {
     try {
         const dm = await DataModel.find()
@@ -19,12 +19,12 @@ router.get('/', async (req, res) => {
     }
 })
 
-// GET something by ID
-router.get('/:id', (req, res) => {
+// GET cohorts by ID
+router.get('/:id', async (req, res) => {
     try {
         const dm = await DataModel.findById(req.params.id)
         if (dm) {
-            res.status(200).json(br)
+            res.status(200).json(dm)
         } else {
             res.status(404).json({
                 message: "The something with this specific ID does not exist"
@@ -38,8 +38,8 @@ router.get('/:id', (req, res) => {
 })
 
 
-// POST a new something
-router.post(('/', (req, res) => {
+// POST a new cohorts
+router.post(('/', async (req, res) => {
     try {
         const dm = await DataModel.add(req.body)
         res.status(201).json(dm)
@@ -50,8 +50,8 @@ router.post(('/', (req, res) => {
     }
 }))
 
-// UPDATE a something
-router.put('/:id', (req, res) => {
+// UPDATE a cohorts
+router.put('/:id', async (req, res) => {
     try {
         const dm = await DataModel.update(req.params.id, req.body)
         if (br) {
@@ -69,8 +69,8 @@ router.put('/:id', (req, res) => {
 })
 
 
-// REMOVE something
-router.delete('/:id', (req, res) => {
+// REMOVE cohorts
+router.delete('/:id', async (req, res) => {
     try {
         const count = await DataModel.remove(req.params.id)
         if (count > 0) {
@@ -88,3 +88,6 @@ router.delete('/:id', (req, res) => {
         })
     }
 })
+
+
+module.exports = router;

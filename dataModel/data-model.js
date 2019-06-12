@@ -32,3 +32,15 @@ function add(newPost){
     return db('something')
     .where({id})
 }
+
+function update(id, change){
+    return db('something')
+    .where({id})
+    .update(change)
+}
+
+function remove(id){
+    return db('something')
+    .where({id})
+    .del()
+}

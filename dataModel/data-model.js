@@ -25,7 +25,7 @@ function findById(id){
 
 function add(newPost){
     return db('cohorts')
-    .where({id})
+    .insert(newPost)
 }
 
 function update(id, change){
